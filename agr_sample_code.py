@@ -5,7 +5,8 @@ import dash_bootstrap_components as dbc
 import dash_table_experiments as dt
 
 app = Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
-data=pd.read_csv("agriculture_production/APY.csv")
+server=app.server
+data=pd.read_csv("APY.csv")
 #print(len(data))
 card2=dbc.Card([
     dbc.CardBody([dbc.Row([dbc.Col(dcc.Dropdown(data['State'].unique(),'Andhra Pradesh',
