@@ -1,3 +1,5 @@
 dash==2.9.3
 pandas
 gunicorn
+dash_bootstrap_components==1.4.1
+dash_table_experiments==0.6.0
