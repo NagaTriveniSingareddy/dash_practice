@@ -1,0 +1,108 @@
+.row>* {
+
+
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    margin-left: 3px;
+    margin-top:3px;
+}
+.row{
+    margin-left:0px;
+}
+
+.app-header {
+    /* margin-left: 3px; */
+    display: flex;
+    /* margin-top: 10px; */
+    /* background-color: green; */
+    width:100%;
+
+}
+/* .card-color{
+    background-color: aquamarine;
+} */
+.card {
+    --bs-card-border-width: 0px;
+    border-radius:0px;
+}
+.app-12 {
+    height: 193px;
+    margin-top: 3px; 
+    width: 88%;
+    padding:0px !important;
+}
+.app-13 {
+    padding:0px !important;
+}
+.DateInput {
+    width: 60px;
+    height:30px;
+    /* margin-left:3px */
+    ;
+.DateInput_input{
+    height:30px;
+    font-size: 8px;
+}
+.DateInput_input__focused {
+    border-bottom: 0px;
+    
+}
+/* .button {
+border: none;
+background-color: grey;
+font-size: 20px;
+} */
+.btn {
+    font-weight: 600;
+    font-size: 22px;
+    background-color: grey;
+}
+
+/* .DateRangePickerInput__withBorder {
+    border-radius: 0px !important; 
+    border: none !important; 
+} */
+.DateRangePickerInput {
+    border:0px;
+}
+/* .DateRangePickerInput__withBorder {
+    border-radius: 1px;
+    border: 1px solid #dbdbdb;
+} */
+/* .DateRangePickerInput__withBorder {
+    border-radius: none !important;
+    border:none !important;
+} */
+/* #my-date-picker-range{
+    border-radius: none !important;
+    border:none !important;
+} */
+.sample1{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    margin-top: 16px;
+    margin-left: 39px;
+}
+.btn{
+    font-size: 22px;
+}
+.value1{
+    margin-top: -10px;
+    width: 250px;
+    height: 56px;
+}
+.btn-group{
+    background-color: grey;
+}
+}
+.DateInput_input {
+    font-size: 10px;
+}
+.scroll
+{
+width:80%;
+height:400px;
+overflow-y:scroll;
+position: relative;
+}

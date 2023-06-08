@@ -1,0 +1,56 @@
+import pandas as pd
+import datetime
+from datetime import datetime, timedelta
+
+# data1=pd.DataFrame({"a":[1,2,3,4],"b":[5,6,7,8]})   
+# #print(data1)        
+# for index,row in data1.iterrows():
+#     print(row['a'])
+def get_runs(state_data):
+    machine_df=pd.DataFrame()
+    
+    prev_seq=state_data['Value'][0]
+    prev_ind=0
+    start_time=state_data['sourcetimestamp'][0]
+    for index in state_data.index:
+        machine_name=state_data.loc[index,'MachineName']
+        #machine_key=state_data.loc[index,'MachineKey']
+        machine_id=state_data.loc[index,'MachineId']
+        #zone_id=state_data.loc[index,'ZoneId']
+       # order=state_data.loc[index,'OrderInLine']
+        sku=state_data.loc[index,'SKU']
+        #sku_name=state_data.loc[index,'SKUName']
+       # shift=state_data.loc[index,'Shift']
+        #shiftlabel=state_data.loc[index,'ShiftLabel']
+        #scale=state_data.loc[index,'Conversion Factor']
+        curr_seq=state_data.loc[index,'Value']
+        #eol=state_data.loc[index,'IsEOL']
+        if curr_seq!=prev_seq:
+            end_time=state_data.loc[index,'sourcetimestamp']
+            a={'MachineName':machine_name,'MachineId':machine_id,
+              'Value':prev_seq,'Start Time':start_time,'End Time':end_time,
+               'SKU':sku}
+            a=pd.DataFrame(pd.Series(a)).T
+           # a=pd.DataFrame(a)
+
+            machine_df=pd.concat([machine_df,a],axis=0)
+            start_time=state_data.loc[index,'sourcetimestamp']
+            prev_seq=curr_seq
+            prev_ind=index
+        else:
+            prev_seq=curr_seq
+            prev_ind=index
+            
+    end_time=state_data.loc[prev_ind,'sourcetimestamp']
+    a={'MachineName':machine_name,
+       'Value':prev_seq,'Start Time':start_time,'End Time':end_time}
+    a=pd.DataFrame(pd.Series(a)).T
+    machine_df=pd.concat([machine_df,a],axis=0)
+    
+    machine_df.reset_index(drop=True,inplace=True)
+    
+    return machine_df
+state_data=pd.read_csv(r"C:\\Users\SingareddyNagaTriven\Downloads\dfos\Base15Output.csv")
+result=get_runs(state_data)
+print(len(result))
+result=result.to_csv("result.csv")
